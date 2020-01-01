@@ -1,0 +1,356 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block title %} | Welcome{% endblock %}
+{% load static %}
+
+
+{% block content %}
+
+
+<!-- Showcase -->
+<section id="showcase">
+  <div class="container text-center">
+    <div class="home-search p-5">
+      <div class="overlay p-5">
+        <h1 class="display-4 mb-4">
+          Best travels in Bangladesh
+        </h1>
+        <p class="lead">We Offer the Best Deals On Flights Worldwide. Book Flight + Hotel & Save More. All Major
+          Airlines. Secure Payments. Limited Time Offers. Honest Price.
+          Book A Package & Save BIG. 24/7 Customer Support. Unrivaled Inventory. Instant Confirmation. Compare & Save.
+        </p>
+        <div class="search">
+          <form action="search.html">
+            <!-- Form Row 1 -->
+            <div class="form-row">
+              <div class="col-md-6 mb-3">
+                <label class="sr-only">Select Countries </label>
+                <select name="countries" class="form-control">
+                  <option selected="true" disabled="disabled">WHERE DO YOU WANT TO GO?</option>
+                  {% for key, value in countries.items %}
+                  <option value="{{ key }}">{{ value }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+
+              <div class="col-md-6 mb-3">
+
+              </div>
+            </div>
+            <!-- Form Row 2 -->
+            <div class="form-row">
+              <div class="col-md-6 mb-3">
+                <label class="sr-only">Departure Airport </label>
+                <select name="airports" class="form-control">
+                  <option selected="true" disabled="disabled">Type Departure City</option>
+                  {% for key, value in airports.items %}
+                  <option value="{{ key }}">{{ value }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="sr-only">Destination Airport </label>
+                <select name="airports" class="form-control">
+                  <option selected="true" disabled="disabled">Type Destination City</option>
+                  {% for key, value in airports.items %}
+                  <option value="{{ key }}">{{ value }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+
+            <!-- Form Row 3 -->
+            <div class="form-row">
+              <div class="col-md-4 mb-3">
+                <label class="sr-only">Adult</label>
+                <select name="adult" class="form-control">
+                  <option selected="true" disabled="disabled">Adult</option>
+                  {% for key, value in adults.items %}
+                  <option value="{{ key }}">{{ value }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label class="sr-only">Child</label>
+                <select name="child" class="form-control">
+                  <option selected="true" disabled="disabled">Child</option>
+                  {% for key, value in childs.items %}
+                  <option value="{{ key }}">{{ value }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label class="sr-only">Rooms</label>
+                <select name="rooms" class="form-control">
+                  <option selected="true" disabled="disabled">Rooms</option>
+                  {% for key, value in rooms.items %}
+                  <option value="{{ key }}">{{ value }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+            <button class="btn btn-secondary btn-block mt-4" type="submit">Submit form</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Why we are different Section -->
+<div class="container">
+  <p class="section-header mt-5">WHY WE ARE DIFFERENT ...</p>
+  <div class="row">
+    <!-- first column -->
+    <div class="col-md-4 col-sm-12">
+      <div class="row">
+        <div class="col-md-4">
+          <img src="{% static 'img/building.jpg' %}" alt="first col logo" class="img-responsive">
+        </div>
+        <div class="col-md-8">
+          <h4 class="text-danger">Cheapest Flights</h4>
+          <p>Find the best fares on flights and travel the world with Insider Travel.</p>
+        </div>
+      </div>
+    </div>
+    <!-- second column -->
+    <div class="col-md-4 col-sm-12">
+      <div class="row">
+        <div class="col-md-4">
+          <img src="{% static 'img/building.jpg' %}" alt="first col logo" class="img-responsive">
+        </div>
+        <div class="col-md-8">
+          <h4 class="text-danger">Perfect and Cheap Hotels</h4>
+          <p>Search for your perfect hotels with Insider Travel today and find the best prices.</p>
+        </div>
+      </div>
+    </div>
+    <!-- third column -->
+    <div class="col-md-4 col-sm-12">
+      <div class="row">
+        <div class="col-md-4">
+          <img src="{% static 'img/building.jpg' %}" alt="first col logo" class="img-responsive">
+        </div>
+        <div class="col-md-8">
+          <h4 class="text-danger">Easy Booking</h4>
+          <p>Search, select and save - the quickest way to reserve your Journey.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col d-flex">
+      <div class="mr-auto">
+        <span class="dot"> </span>
+        <span class="dot"> </span>
+        <span class="dot"> </span>
+        <span class="dot"> </span>
+        <span class="dot"> </span>
+        <span class="dot"> </span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<!-- Recommendation Flights for you section -->
+<section id="recommendation">
+  <div class="container">
+    <div class="row">
+      <div class="col text-color">
+        <p class="section-header mt-5">RECOMMENDATION FLIGHTS FOR YOU</p>
+        <p> May 2020, Flying from Dhaka </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="card-deck">
+          <div class="card">
+            <img class="card-img" src="{% static 'img/building.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+              <h6 class="card-title">NEW YORK, NY, UNITED STATES</h6>
+              <p class="card-text">Get prices >></p>
+            </div>
+          </div>
+          <div class="card">
+            <img class="card-img" src="{% static 'img/building.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+              <h6 class="card-title">NEW YORK, NY, UNITED STATES</h6>
+              <p class="card-text">Get prices >></p>
+            </div>
+          </div>
+          <div class="card">
+            <img class="card-img" src="{% static 'img/building.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+              <h6 class="card-title">NEW YORK, NY, UNITED STATES</h6>
+              <p class="card-text">Get prices >></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col d-flex">
+        <div class="mr-auto">
+          <span class="dot"> </span>
+          <span class="dot"> </span>
+          <span class="dot"> </span>
+          <span class="dot"> </span>
+          <span class="dot"> </span>
+          <span class="dot"> </span>
+        </div>
+        <div>
+          <p>View All Recommendations >> </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Last minuite hotel Deals section -->
+<section id="recommendation">
+  <div class="container">
+    <div class="row">
+      <div class="col text-color">
+        <p class="section-header mt-5">LAST MINUITE HOTEL DEALS</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card-deck">
+          <div class="card">
+            <div class="card bg-dark text-white">
+              <img src="{% static 'img/dubai.jpeg' %}" class="card-img img-fluid" alt="Dubai" style="opacity:0.4">
+              <div class="card-img-overlay">
+                <h5 class="card-title">Dubai</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card-deck">
+          <div class="card">
+            <div class="card bg-dark text-white">
+              <img src="{% static 'img/newYork.jpeg' %}" class="card-img img-fluid" alt="New York" style="opacity:0.6">
+              <div class="card-img-overlay">
+                <h5 class="card-title">New York</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card-deck">
+          <div class="card">
+            <div class="card bg-dark text-white">
+              <img src="{% static 'img/sydney.jpeg' %}" class="card-img img-fluid" alt="Sydney" style="opacity:0.4">
+              <div class="card-img-overlay">
+                <h5 class="card-title">Sydney</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col d-flex">
+        <div class="mr-auto">
+          <span class="dot"> </span>
+          <span class="dot"> </span>
+          <span class="dot"> </span>
+          <span class="dot"> </span>
+          <span class="dot"> </span>
+          <span class="dot"> </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Deals for the week section -->
+
+<div class="container ">
+  <div class="row">
+    <div class="col text-color">
+      <p class="section-header mt-5">DEALS FOR THE WEEK</p>
+    </div>
+  </div>
+  <div class="row mb-5">
+    <div class="col-md-5">
+      <div class="card-deck">
+        <div class="card">
+          <img src="{% static 'img/dubai.jpeg' %}" class="card-img-top" alt="dubai">
+          <div class="card-body">
+            <div class="row mb-2">
+              <div class="col-md-7">
+                <img src="{% static 'img/sydney.jpeg' %}" alt="">
+              </div>
+              <div class="col-md-5">
+                <h5>JFK - DAC</h5>
+                <p class="text-muted">sep 03 - sep 14</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-7">
+                <img src="{% static 'img/sydney.jpeg' %}" alt="">
+              </div>
+              <div class="col-md-5">
+                <h5>DAC - KUL</h5>
+                <p class="text-muted">sep 03 - sep 14</p>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Last updated 3 days ago</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="card-deck">
+        <div class="card">
+          <img src="{% static 'img/newYork.jpeg' %}" class="card-img-top" alt="dubai">
+          <div class="card-body">
+            <div class="row mb-2">
+              <div class="col-md-7">
+                <img src="{% static 'img/newYork.jpeg' %}" alt="">
+              </div>
+              <div class="col-md-5">
+                <h5>JFK - DAC</h5>
+                <p class="text-muted">sep 03 - sep 14</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-7">
+                <img src="{% static 'img/newYork.jpeg' %}" alt="">
+              </div>
+              <div class="col-md-5">
+                <h5>DAC - KUL</h5>
+                <p class="text-muted">sep 03 - sep 14</p>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Last updated 3 days ago</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
