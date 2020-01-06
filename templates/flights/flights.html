@@ -1,0 +1,244 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block title %} | Welcome{% endblock %}
+{% load static %}
+
+
+{% block content %}
+
+<!-- Breadcrumb -->
+<section id="bc" class="mt-3">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{% static 'index' %}">
+                        <i class="fas fa-home"></i> Home</a>
+                </li>
+                <li class="breadcrumb-item active"> Browse Flights</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+
+<!-- first row ( description ) -->
+<div class="container">
+    <div class="row">
+        {% if destination %}
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-md-2">
+                    <i></i>
+                </div>
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-12">Trip</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">{{ deparature }} to {{ destination }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-md-2">
+                    <i></i>
+                </div>
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-12">Departure</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">{{ deparature }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-md-2">
+                    <i></i>
+                </div>
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-12">Destination</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">{{ destination }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <i></i>
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12">Adult</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">{{ adult }}</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12">Child</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">{{ child }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+
+
+
+<!-- second part -->
+<div class="container">
+    <div class="row mt-5 mb-5">
+        <div class="col-md-3">
+            <!-- list of Airways -->
+            {% if airlines %}
+            {% for air in airlines %}
+            <div class="row">
+                <div class="col-md-2">
+                    <img src="{{ air.airways_logo.url }}" alt="airways logo" style="width:40px;height:24px">
+                </div>
+                <div class="col-md-10">
+                    <p class="ml-2">{{ air.airways_name }}</p>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="col-md-12">
+                <p>No Airlines Available</p>
+            </div>
+            {% endif %}
+        </div>
+        <div class="col-md-9">
+
+            <!-- column header -->
+            <div class="row border border-primary mb-3 text-center">
+                <div class="col-md-3">
+                    <p>Airlines</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Departure</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Arrivel</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Price</p>
+                </div>
+            </div>
+
+            {% if flights %}
+            {% for flight in flights %}
+            <div class="row mb-5 text-center border border-primary">
+                <div class="col-md-9">
+                    <div class="row p-2">
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-12">{{ flight.airways.airways_name }}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">{{ flight.airways.airways_flight_code }}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img src="{{ flight.airways.airways_logo.url }}" alt="airways logo" style="width:40px;height:24px">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row" style="text-align: right;">
+                                <div class="col-md-12">{{ flight.from_where }}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">{{ flight.flight_time }}</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row" style="text-align: left;">
+                                <div class="col-md-12">{{ flight.destination }}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">{{ flight.flight_time }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="row" style="text-align: right;">
+                        <div class="col-mid-12">
+                            <h4>{{ flight.price }}</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-mid-12">
+                            <a href="{% url 'flight' flight.id %}" class="btn btn-danger btn-block">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="col-md-12">
+                <p>No Flights Available</p>
+            </div>
+            {% endif %}
+
+
+            <!-- pagination -->
+            <div class="row">
+                <div class="col-md-12">
+                    {% if flights.has_other_pages %}
+                    <ul class="pagination">
+                        {% if flights.has_previous %}
+                        <li class="page-item">
+                            <a href="?page={{flights.previous_page_number}}" class="page-link">&laquo;</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link">&laquo;</a>
+                        </li>
+                        {% endif %}
+                        {% for i in flights.paginator.page_range %}
+                        {% if flights.number == i %}
+                        <li class="page-item active">
+                            <a class="page-link">{{i}}</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item">
+                            <a href="?page={{i}}" class="page-link">{{i}}</a>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                        {% if flights.has_next %}
+                        <li class="page-item">
+                            <a href="?page={{listings.next_page_number}}" class="page-link">&raquo;</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link">&raquo;</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

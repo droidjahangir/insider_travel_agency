@@ -43,6 +43,10 @@ INSTALLED_APPS = [
     'flights.apps.FlightsConfig',
     'hotels.apps.HotelsConfig',
     'accounts.apps.AccountsConfig',
+    'airlines.apps.AirlinesConfig',
+    'city.apps.CityConfig',
+    'city_destination.apps.CityDestinationConfig',
+    'contacts.apps.ContactsConfig',
 
     # humanize
     'django.contrib.humanize',
